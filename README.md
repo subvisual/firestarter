@@ -7,7 +7,7 @@ Installation
 
 First install the firestarter gem:
 
-    gem install firestarter
+    gem install gb-firestarter
 
 Then run:
 
