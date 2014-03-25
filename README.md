@@ -1,4 +1,4 @@
-# Firestarter
+# Firestarter [![Build Status](https://travis-ci.org/groupbuddies/firestarter.svg?branch=master)](https://travis-ci.org/groupbuddies/firestarter)
 
 Firestarter is the base Rails application used at [Group Buddies](http://groupbuddies.com).
 
