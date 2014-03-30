@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta name="ROBOTS" content="NOODP"
+    title = title
+    = stylesheet_link_tag :application, media: 'all'
+    = csrf_meta_tags
+  body
+    = render 'flashes'
+    = yield
+    = render 'javascript'

@@ -120,8 +120,9 @@ end
     end
 
     def create_application_layout
-      template 'firestarter_layout.html.erb.erb',
-        'app/views/layouts/application.html.erb',
+      remove_file 'app/views/layouts/application.html.erb'
+      template 'firestarter_layout.slim.erb',
+        'app/views/layouts/application.slim',
         force: true
     end
 
