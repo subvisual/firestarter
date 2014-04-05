@@ -233,8 +233,8 @@ end
 
     def setup_stylesheets
       remove_file 'app/assets/stylesheets/application.css'
-      copy_file 'application.css.scss',
-        'app/assets/stylesheets/application.css.scss'
+      copy_file 'application.sass',
+        'app/assets/stylesheets/application.sass'
     end
 
     def gitignore_files
