@@ -7,26 +7,11 @@
 set -e
 
 # Set up Ruby dependencies via Bundler
-bundle install
-
-# Set up database and add any development seed data
-bundle exec rake dev:prime
+bundle check || bundle install
 
 # Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
 mkdir -p .git/safe
 
-# Set up configurable environment variables
-if [ ! -f .env ]; then
-  cp .sample.env .env
-fi
-
-# Pick a port for Foreman
-echo "port: 7000" > .foreman
-
-# Set up DNS via Pow
-if [ -d ~/.pow ]
-then
-  echo 7000 > ~/.pow/`basename $PWD`
-else
-  echo "Pow not set up but the team uses it for this project. Setup: http://goo.gl/RaDPO"
-fi
+rake db:setup
+rake db:test:prepare
+rake dev:setup

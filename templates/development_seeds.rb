@@ -3,7 +3,7 @@ if Rails.env.development?
 
   namespace :dev do
     desc 'Seed data for development environment'
-    task prime: 'db:setup' do
+    task setup: 'db:setup' do
       FactoryGirl.find_definitions
       include FactoryGirl::Syntax::Methods
 

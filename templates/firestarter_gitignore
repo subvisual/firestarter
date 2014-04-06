@@ -11,3 +11,8 @@
 /public/system
 /tags
 /tmp/*
+/public/system/*
+/public/uploads/*
+/public/assets/source_maps
+/spec/tmp/*
+.ruby-gemset
