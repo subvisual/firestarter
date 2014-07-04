@@ -180,5 +180,5 @@ Firestarter is maintained by
 License
 -------
 
-Firestarter is Â© 2014 GB-Software As A Service, Lda. It is free software and may be
+Firestarter is © 2014 GB-Software As A Service, Lda. It is free software and may be
 redistributed under the terms specified in the [LICENSE](LICENSE) file.
