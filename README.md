@@ -13,7 +13,7 @@ Then run:
 
     firestarter projectname
 
-This will create a Rails 4.0 app in `projectname`.
+This will create a Rails app in `projectname`.
 
 By default this script creates a new git repository. See below if you
 want to use it against an existing repo.
