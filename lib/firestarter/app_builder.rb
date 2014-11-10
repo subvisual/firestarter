@@ -177,11 +177,6 @@ end
       run 'bundle exec spring binstub --all'
     end
 
-    def configure_background_jobs_for_rspec
-      copy_file 'background_jobs_rspec.rb', 'spec/support/background_jobs.rb'
-      run 'rails g delayed_job:active_record'
-    end
-
     def configure_time_zone
       config = <<-RUBY
     config.active_record.default_timezone = :utc
@@ -254,35 +249,6 @@ end
       run 'git init'
     end
 
-    def create_heroku_apps
-      path_addition = override_path_for_tests
-      run "#{path_addition} heroku create #{app_name}-production --remote=production"
-      run "#{path_addition} heroku create #{app_name}-staging --remote=staging"
-      run "#{path_addition} heroku config:add RACK_ENV=staging RAILS_ENV=staging --remote=staging"
-    end
-
-    def set_heroku_remotes
-      remotes = <<-RUBY
-
-# Set up staging and production git remotes
-git remote add staging git@heroku.com:#{app_name}-staging.git
-git remote add production git@heroku.com:#{app_name}-production.git
-      RUBY
-
-      append_file 'bin/setup', remotes
-    end
-
-    def set_heroku_rails_secrets
-      path_addition = override_path_for_tests
-      run "#{path_addition} heroku config:add SECRET_KEY_BASE=#{generate_secret} --remote=staging"
-      run "#{path_addition} heroku config:add SECRET_KEY_BASE=#{generate_secret} --remote=production"
-    end
-
-    def create_github_repo(repo_name)
-      path_addition = override_path_for_tests
-      run "#{path_addition} hub create #{repo_name}"
-    end
-
     def copy_miscellaneous_files
       copy_file 'errors.rb', 'config/initializers/errors.rb'
     end
@@ -301,8 +267,8 @@ git remote add production git@heroku.com:#{app_name}-production.git
 
     def remove_routes_comment_lines
       replace_in_file 'config/routes.rb',
-        /Application\.routes\.draw do.*end/m,
-        "Application.routes.draw do\nend"
+        /Rails.application\.routes\.draw do.*end/m,
+        "Rails.application.routes.draw do\nend"
     end
 
     def disable_xml_params

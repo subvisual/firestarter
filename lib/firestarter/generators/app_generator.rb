@@ -36,8 +36,6 @@ module Firestarter
       invoke :remove_routes_comment_lines
       invoke :setup_git
       invoke :setup_database
-      invoke :create_heroku_apps
-      invoke :create_github_repo
       invoke :outro
     end
 
@@ -78,7 +76,6 @@ module Firestarter
       build :generate_rspec
       build :configure_rspec
       build :use_spring_binstubs
-      build :configure_background_jobs_for_rspec
       build :enable_database_cleaner
       build :configure_spec_support_features
       build :configure_i18n_in_specs
@@ -136,22 +133,6 @@ module Firestarter
         say 'Initializing git'
         invoke :setup_gitignore
         invoke :init_git
-      end
-    end
-
-    def create_heroku_apps
-      if options[:heroku]
-        say 'Creating Heroku apps'
-        build :create_heroku_apps
-        build :set_heroku_remotes
-        build :set_heroku_rails_secrets
-      end
-    end
-
-    def create_github_repo
-      if !options[:skip_git] && options[:github]
-        say 'Creating Github repo'
-        build :create_github_repo, options[:github]
       end
     end
 
