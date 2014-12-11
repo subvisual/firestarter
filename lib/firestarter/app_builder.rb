@@ -6,6 +6,10 @@ module Firestarter
       template 'README.md.erb', 'README.md'
     end
 
+    def rakefile
+      template 'Rakefile.erb', 'Rakefile'
+    end
+
     def raise_on_delivery_errors
       replace_in_file 'config/environments/development.rb',
         'raise_delivery_errors = false', 'raise_delivery_errors = true'
