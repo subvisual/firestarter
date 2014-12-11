@@ -6,6 +6,7 @@ gem 'bourbon'
 gem 'coffee-rails'
 gem 'dotenv-rails'
 gem 'email_validator'
+gem 'foreman'
 gem 'jquery-rails'
 gem 'pg'
 gem 'pry-rails'
@@ -37,6 +38,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock'
+  gem 'rubocop', require: false
 end
 
 group :production, :staging do
@@ -44,12 +46,10 @@ group :production, :staging do
 end
 
 group :deploy do
-  gem 'capistrano', require: false
+  gem 'capistrano', '~> 3.2.1', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails-console', require: false
-  gem 'capistrano3-monit', require: false
   gem 'capistrano3-env', require: false
-  gem 'librarian-puppet', require: false
+  gem 'capistrano-foreman', github: 'groupbuddies/capistrano-foreman', branch: :master
 end
