@@ -19,6 +19,5 @@ RSpec.configure do |config|
     remove_project_directory
 
     FakeHeroku.clear!
-    FakeGithub.clear!
   end
 end

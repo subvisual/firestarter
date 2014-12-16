@@ -14,8 +14,7 @@ module FirestarterTestHelpers
       Bundler.with_clean_env do
         ENV['TESTING'] = '1'
 
-        # %x(#{firestarter_bin} #{APP_NAME} #{arguments})
-        %x(touch asd)
+        %x(#{firestarter_bin} #{APP_NAME} #{arguments})
       end
     end
   end
