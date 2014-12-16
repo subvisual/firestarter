@@ -126,9 +126,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba (~> 0.5.2)
-  capybara
-  cucumber (~> 1.2)
+  aruba (~> 0.5.4)
+  capybara (~> 2.2, >= 2.2.0)
   gb-firestarter!
   pry
-  rspec
+  rspec (~> 2.0)

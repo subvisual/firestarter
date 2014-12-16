@@ -7,8 +7,9 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.2'
   s.add_dependency 'bundler', '~> 1.3'
   s.add_dependency 'rails', Firestarter::RAILS_VERSION
-  s.add_development_dependency 'aruba', '~> 0.5.2'
-  s.add_development_dependency 'cucumber', '~> 1.2'
+  s.add_development_dependency 'aruba', '~> 0.5.4'
+  s.add_development_dependency 'rspec', '~> 2.0'
+  s.add_development_dependency 'capybara', '~> 2.2', '>= 2.2.0'
   s.authors = ['groupbuddies']
   s.date = Date.today.strftime('%Y-%m-%d')
 
@@ -29,6 +30,4 @@ what we use at Group Buddies.
   s.summary = "Generate a Rails app using groupbuddies's best practices and opinions."
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.version = Firestarter::VERSION
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'capybara'
 end
