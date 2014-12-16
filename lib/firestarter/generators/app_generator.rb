@@ -23,20 +23,20 @@ module Firestarter
     def firestarter_customization
       invoke :customize_gemfile
       invoke :setup_development_environment
-      # invoke :setup_test_environment
-      # invoke :setup_production_environment
-      # invoke :setup_staging_environment
-      # invoke :setup_secret_token
-      # invoke :create_firestarter_views
-      # invoke :setup_coffeescript
-      # invoke :configure_app
-      # invoke :setup_stylesheets
-      # invoke :copy_miscellaneous_files
-      # invoke :customize_error_pages
-      # invoke :remove_routes_comment_lines
-      # invoke :setup_git
-      # invoke :setup_database
-      # invoke :outro
+      invoke :setup_test_environment
+      invoke :setup_production_environment
+      invoke :setup_staging_environment
+      invoke :setup_secret_token
+      invoke :create_firestarter_views
+      invoke :setup_coffeescript
+      invoke :configure_app
+      invoke :setup_stylesheets
+      invoke :copy_miscellaneous_files
+      invoke :customize_error_pages
+      invoke :remove_routes_comment_lines
+      invoke :setup_git
+      invoke :setup_database
+      invoke :outro
     end
 
     def customize_gemfile
@@ -185,6 +185,10 @@ module Firestarter
       else
         "-p#{RUBY_PATCHLEVEL}"
       end
+    end
+
+    def spring_install?
+      false
     end
   end
 end
