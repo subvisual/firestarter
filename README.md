@@ -41,6 +41,7 @@ It includes application gems like:
 * [Unicorn](https://github.com/defunkt/unicorn) to serve HTTP requests
 * [Title](https://github.com/calebthompson/title) for storing titles in
   translations
+* [Dotenv](https://github.com/bkeepers/dotenv) for loading environment variables
 
 And gems only for staging and production like:
 
@@ -50,10 +51,7 @@ And gems only for staging and production like:
 
 And development gems like:
 
-* [Dotenv](https://github.com/bkeepers/dotenv) for loading environment variables
 * [Pry Rails](https://github.com/rweng/pry-rails) for debugging
-* [Spring](https://github.com/rails/spring) for fast Rails actions via
-  pre-loading
 
 And testing gems like:
 
@@ -90,27 +88,13 @@ Firestarter also comes with:
 
 Firestarter fixes several of Rails' [insecure defaults]:
 
-* Firestarter uses Unicorn instead of WEBrick, allowing less verbose Server
+* Firestarter uses Puma instead of WEBrick, allowing less verbose Server
   headers.
 * Firestarter is configured to pull your application secret key base from an
   environment variable, which means you won't need to risk placing it in version
   control.
 
 [insecure defaults]: http://blog.codeclimate.com/blog/2013/03/27/rails-insecure-defaults/
-
-Heroku
-------
-
-You can optionally create Heroku staging and production apps:
-
-    firestarter app --heroku true
-
-This:
-
-* Creates a staging and production Heroku app
-* Sets them as `staging` and `production` Git remotes
-* Configures staging with `RACK_ENV` and `RAILS_ENV` environment variables set
-  to `staging`
 
 Git
 ---
@@ -120,23 +104,10 @@ bypass this with the `--skip-git` option:
 
     firestarter app --skip-git true
 
-GitHub
-------
-
-You can optionally create a GitHub repository for the new Rails app. It
-requires that you have [Hub](https://github.com/github/hub) on your system:
-
-    curl http://hub.github.com/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub
-    firestarter app --github organization/project
-
-This has the same effect as running:
-
-    hub create organization/project
-
 Dependencies
 ------------
 
-Firestarter requires Ruby 1.9.2 or greater.
+Firestarter requires Ruby 2.1.0 or greater.
 
 Some gems included in Firestarter have native extensions. You should have GCC
 installed on your machine before generating an app with Firestarter.

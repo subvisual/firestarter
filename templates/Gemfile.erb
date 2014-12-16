@@ -11,7 +11,7 @@ gem 'pg'
 gem 'pry-rails'
 gem 'puma'
 gem 'rack-timeout'
-gem 'rails'
+gem 'rails', '~> <%= Firestarter::RAILS_VERSION %>'
 gem 'recipient_interceptor'
 gem 'sass-rails'
 gem 'slim-rails'
@@ -22,25 +22,25 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
-  gem 'spring'
-  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '>= 2.14'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :test do
   gem 'capybara-webkit', '>= 1.0.0'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock'
+end
+
+group :production, :staging do
+  gem 'rails_12factor'
 end
 
 group :deploy do
@@ -52,5 +52,4 @@ group :deploy do
   gem 'capistrano3-monit', require: false
   gem 'capistrano3-env', require: false
   gem 'librarian-puppet', require: false
-  gem 'puppet', require: false
 end

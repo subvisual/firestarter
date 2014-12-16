@@ -26,6 +26,7 @@ module Firestarter
     end
 
     def provide_setup_script
+      remove_file 'bin/setup'
       copy_file 'bin_setup', 'bin/setup'
       run 'chmod a+x bin/setup'
     end
@@ -112,11 +113,11 @@ end
     end
 
     def create_shared_flashes
-      copy_file '_flashes.html.erb', 'app/views/application/_flashes.html.erb'
+      copy_file '_flashes.slim', 'app/views/application/_flashes.slim'
     end
 
     def create_shared_javascripts
-      copy_file '_javascript.html.erb', 'app/views/application/_javascript.html.erb'
+      copy_file '_javascript.slim', 'app/views/application/_javascript.slim'
     end
 
     def create_application_layout
@@ -150,11 +151,6 @@ end
       template 'ruby-version.erb', '.ruby-version'
     end
 
-    def setup_heroku_specific_gems
-      inject_into_file 'Gemfile', "\n\s\sgem 'rails_12factor'",
-        after: /group :staging, :production do/
-    end
-
     def enable_database_cleaner
       copy_file 'database_cleaner_rspec.rb', 'spec/support/database_cleaner.rb'
     end
@@ -171,10 +167,6 @@ end
 
     def configure_i18n_in_specs
       copy_file 'i18n.rb', 'spec/support/i18n.rb'
-    end
-
-    def use_spring_binstubs
-      run 'bundle exec spring binstub --all'
     end
 
     def configure_time_zone
@@ -213,8 +205,8 @@ end
       generate 'rspec:install'
     end
 
-    def configure_unicorn
-      copy_file 'unicorn.rb', 'config/unicorn.rb'
+    def configure_puma
+      copy_file 'puma.rb', 'config/puma.rb'
     end
 
     def setup_foreman

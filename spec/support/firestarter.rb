@@ -13,7 +13,6 @@ module FirestarterTestHelpers
     Dir.chdir(tmp_path) do
       Bundler.with_clean_env do
         ENV['TESTING'] = '1'
-        ENV['DISABLE_SPRING'] = '1'
 
         %x(#{firestarter_bin} #{APP_NAME} #{arguments})
       end

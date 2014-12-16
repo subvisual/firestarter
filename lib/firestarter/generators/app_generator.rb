@@ -6,9 +6,6 @@ module Firestarter
     class_option :database, :type => :string, :aliases => '-d', :default => 'postgresql',
       :desc => "Preconfigure for selected database (options: #{DATABASES.join('/')})"
 
-    class_option :heroku, :type => :boolean, :aliases => '-H', :default => false,
-      :desc => 'Create staging and production Heroku apps'
-
     class_option :github, :type => :string, :aliases => '-G', :default => nil,
       :desc => 'Create Github repository and add remote origin pointed to repo'
 
@@ -42,11 +39,6 @@ module Firestarter
     def customize_gemfile
       build :replace_gemfile
       build :set_ruby_to_version_being_used
-
-      if options[:heroku]
-        build :setup_heroku_specific_gems
-      end
-
       bundle_command 'install'
     end
 
@@ -75,7 +67,6 @@ module Firestarter
       build :test_factories_first
       build :generate_rspec
       build :configure_rspec
-      build :use_spring_binstubs
       build :enable_database_cleaner
       build :configure_spec_support_features
       build :configure_i18n_in_specs
@@ -119,7 +110,7 @@ module Firestarter
       build :disable_xml_params
       build :fix_i18n_deprecation_warning
       build :setup_default_rake_task
-      build :configure_unicorn
+      build :configure_puma
       build :setup_foreman
     end
 
@@ -186,6 +177,10 @@ module Firestarter
       else
         "-p#{RUBY_PATCHLEVEL}"
       end
+    end
+
+    def spring_install?
+      false
     end
   end
 end
