@@ -26,6 +26,7 @@ module Firestarter
     end
 
     def provide_setup_script
+      remove_file 'bin/setup'
       copy_file 'bin_setup', 'bin/setup'
       run 'chmod a+x bin/setup'
     end
@@ -112,11 +113,11 @@ end
     end
 
     def create_shared_flashes
-      copy_file '_flashes.html.erb', 'app/views/application/_flashes.html.erb'
+      copy_file '_flashes.slim', 'app/views/application/_flashes.slim'
     end
 
     def create_shared_javascripts
-      copy_file '_javascript.html.erb', 'app/views/application/_javascript.html.erb'
+      copy_file '_javascript.slim', 'app/views/application/_javascript.slim'
     end
 
     def create_application_layout
@@ -173,10 +174,6 @@ end
       copy_file 'i18n.rb', 'spec/support/i18n.rb'
     end
 
-    def use_spring_binstubs
-      run 'bundle exec spring binstub --all'
-    end
-
     def configure_time_zone
       config = <<-RUBY
     config.active_record.default_timezone = :utc
@@ -213,8 +210,8 @@ end
       generate 'rspec:install'
     end
 
-    def configure_unicorn
-      copy_file 'unicorn.rb', 'config/unicorn.rb'
+    def configure_puma
+      copy_file 'puma.rb', 'config/puma.rb'
     end
 
     def setup_foreman

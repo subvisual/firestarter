@@ -41,6 +41,7 @@ It includes application gems like:
 * [Unicorn](https://github.com/defunkt/unicorn) to serve HTTP requests
 * [Title](https://github.com/calebthompson/title) for storing titles in
   translations
+* [Dotenv](https://github.com/bkeepers/dotenv) for loading environment variables
 
 And gems only for staging and production like:
 
@@ -50,10 +51,7 @@ And gems only for staging and production like:
 
 And development gems like:
 
-* [Dotenv](https://github.com/bkeepers/dotenv) for loading environment variables
 * [Pry Rails](https://github.com/rweng/pry-rails) for debugging
-* [Spring](https://github.com/rails/spring) for fast Rails actions via
-  pre-loading
 
 And testing gems like:
 

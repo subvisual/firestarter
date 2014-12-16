@@ -23,20 +23,20 @@ module Firestarter
     def firestarter_customization
       invoke :customize_gemfile
       invoke :setup_development_environment
-      invoke :setup_test_environment
-      invoke :setup_production_environment
-      invoke :setup_staging_environment
-      invoke :setup_secret_token
-      invoke :create_firestarter_views
-      invoke :setup_coffeescript
-      invoke :configure_app
-      invoke :setup_stylesheets
-      invoke :copy_miscellaneous_files
-      invoke :customize_error_pages
-      invoke :remove_routes_comment_lines
-      invoke :setup_git
-      invoke :setup_database
-      invoke :outro
+      # invoke :setup_test_environment
+      # invoke :setup_production_environment
+      # invoke :setup_staging_environment
+      # invoke :setup_secret_token
+      # invoke :create_firestarter_views
+      # invoke :setup_coffeescript
+      # invoke :configure_app
+      # invoke :setup_stylesheets
+      # invoke :copy_miscellaneous_files
+      # invoke :customize_error_pages
+      # invoke :remove_routes_comment_lines
+      # invoke :setup_git
+      # invoke :setup_database
+      # invoke :outro
     end
 
     def customize_gemfile
@@ -75,7 +75,6 @@ module Firestarter
       build :test_factories_first
       build :generate_rspec
       build :configure_rspec
-      build :use_spring_binstubs
       build :enable_database_cleaner
       build :configure_spec_support_features
       build :configure_i18n_in_specs
@@ -119,7 +118,7 @@ module Firestarter
       build :disable_xml_params
       build :fix_i18n_deprecation_warning
       build :setup_default_rake_task
-      build :configure_unicorn
+      build :configure_puma
       build :setup_foreman
     end
 
