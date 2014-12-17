@@ -6,9 +6,6 @@ module Firestarter
     class_option :database, :type => :string, :aliases => '-d', :default => 'postgresql',
       :desc => "Preconfigure for selected database (options: #{DATABASES.join('/')})"
 
-    class_option :heroku, :type => :boolean, :aliases => '-H', :default => false,
-      :desc => 'Create staging and production Heroku apps'
-
     class_option :github, :type => :string, :aliases => '-G', :default => nil,
       :desc => 'Create Github repository and add remote origin pointed to repo'
 
@@ -42,11 +39,6 @@ module Firestarter
     def customize_gemfile
       build :replace_gemfile
       build :set_ruby_to_version_being_used
-
-      if options[:heroku]
-        build :setup_heroku_specific_gems
-      end
-
       bundle_command 'install'
     end
 
