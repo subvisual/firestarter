@@ -155,6 +155,10 @@ end
       template 'ruby-version.erb', '.ruby-version'
     end
 
+    def enable_unobtrusive_pry_in_specs
+      copy_file 'unobtrusive_pry.rb', 'spec/support/pry.rb'
+    end
+
     def enable_database_cleaner
       copy_file 'database_cleaner_rspec.rb', 'spec/support/database_cleaner.rb'
     end
