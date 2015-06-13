@@ -293,6 +293,11 @@ end
       end
     end
 
+    def setup_metrics
+      copy_file 'metrics', '.metrics'
+      copy_file 'metrics.reek', '.metrics.reek'
+    end
+
     private
 
     def override_path_for_tests
