@@ -142,6 +142,10 @@ end
         force: true
     end
 
+    def use_rubocop_config
+      template 'rubocop.yml', '.rubocop.yml'
+    end
+
     def create_database
       bundle_command 'exec rake db:create db:migrate'
     end

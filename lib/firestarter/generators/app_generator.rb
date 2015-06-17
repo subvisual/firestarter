@@ -117,6 +117,7 @@ module Firestarter
       build :setup_default_rake_task
       build :configure_puma
       build :setup_foreman
+      build :use_rubocop_config
     end
 
     def setup_stylesheets
