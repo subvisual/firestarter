@@ -279,6 +279,10 @@ end
       copy_file 'disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
     end
 
+    def scss_lint_config
+      copy_file 'scss-lint.yml', '.scss-lint.yml'
+    end
+
     def setup_default_rake_task
       append_file 'Rakefile' do
         "task(:default).clear\ntask :default => [:spec]\n"

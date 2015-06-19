@@ -29,6 +29,8 @@ group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'rubocop', require: false
+  gem 'scss_lint', require: false
 end
 
 group :test do
@@ -38,7 +40,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock'
-  gem 'rubocop', require: false
 end
 
 group :production, :staging do

@@ -33,6 +33,7 @@ module Firestarter
       invoke :remove_routes_comment_lines
       invoke :setup_git
       invoke :setup_database
+      invoke :scss_lint_config
       invoke :outro
     end
 
