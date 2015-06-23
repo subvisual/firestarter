@@ -63,6 +63,7 @@ linters:
       - max-width
       - max-height
       - min-width
+      - min-height
       - padding
       - padding-top
       - padding-right
