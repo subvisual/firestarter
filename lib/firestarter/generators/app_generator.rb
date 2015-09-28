@@ -53,6 +53,10 @@ module Firestarter
       build :create_database
     end
 
+    def scss_lint_config
+      build :scss_lint_config
+    end
+
     def setup_development_environment
       say 'Setting up the development environment'
       build :raise_on_delivery_errors
