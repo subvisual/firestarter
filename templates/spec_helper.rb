@@ -26,12 +26,12 @@ RSpec.configure do |config|
   config.order = 'random'
   config.use_transactional_fixtures = false
 
-  config.before(:each) do
-    Capybara.current_driver = select_driver
+  config.before(:each) do |example|
+    Capybara.current_driver = select_driver(example)
   end
 end
 
-def select_driver
+def select_driver(example)
   if example.metadata[:js]
     if example.metadata[:js] == :selenium
       :selenium
