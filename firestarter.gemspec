@@ -13,7 +13,9 @@ what we use at Group Buddies.
   HERE
   s.authors = ['groupbuddies']
   s.email = 'contact@groupbuddies.com'
+
   s.files = `git ls-files`.split("\n")
+  s.executables = ['firestarter']
   s.homepage = 'http://github.com/groupbuddies/firestarter'
   s.extra_rdoc_files = %w[README.md LICENSE]
   s.license = 'MIT'
