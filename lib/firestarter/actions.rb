@@ -18,7 +18,7 @@ module Firestarter
       inject_into_file(
         "config/environments/#{rails_env}.rb",
         "\n\n  #{config}",
-        before: "\nend"
+        before: "\nend",
       )
     end
 

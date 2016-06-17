@@ -1,5 +1,5 @@
 module FirestarterTestHelpers
-  APP_NAME = 'dummy'
+  APP_NAME = "dummy"
 
   def remove_project_directory
     FileUtils.rm_rf(project_path)
@@ -12,15 +12,15 @@ module FirestarterTestHelpers
   def run_firestarter(arguments = nil)
     Dir.chdir(tmp_path) do
       Bundler.with_clean_env do
-        ENV['TESTING'] = '1'
+        ENV["TESTING"] = "1"
 
-        %x(#{firestarter_bin} #{APP_NAME} #{arguments})
+        `#{firestarter_bin} #{APP_NAME} #{arguments}`
       end
     end
   end
 
   def drop_dummy_database
-    if File.exists?(project_path)
+    if File.exist?(project_path)
       Dir.chdir(project_path) do
         Bundler.with_clean_env do
           `rake db:drop`
@@ -40,10 +40,10 @@ module FirestarterTestHelpers
   end
 
   def firestarter_bin
-    File.join(root_path, 'bin', 'firestarter')
+    File.join(root_path, "bin", "firestarter")
   end
 
   def root_path
-    File.expand_path('../../../', __FILE__)
+    File.expand_path("../../../", __FILE__)
   end
 end

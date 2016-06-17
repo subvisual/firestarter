@@ -1,11 +1,11 @@
-require 'capybara/rspec'
-require 'bundler/setup'
+require "capybara/rspec"
+require "bundler/setup"
 
 Bundler.require(:default, :test)
 
-require (Pathname.new(__FILE__).dirname + '../lib/firestarter').expand_path
+require File.join(Pathname.new(__FILE__).dirname, "../lib/firestarter")
 
-Dir['./spec/support/**/*.rb'].each { |file| require file }
+Dir["./spec/support/**/*.rb"].each { |file| require file }
 
 RSpec.configure do |config|
   config.include FirestarterTestHelpers

@@ -1,9 +1,9 @@
 if Rails.env.development?
-  require 'factory_girl'
+  require "factory_girl"
 
   namespace :dev do
-    desc 'Seed data for development environment'
-    task setup: 'db:setup' do
+    desc "Seed data for development environment"
+    task setup: "db:setup" do
       FactoryGirl.find_definitions
       include FactoryGirl::Syntax::Methods
 
