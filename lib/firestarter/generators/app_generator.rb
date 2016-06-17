@@ -34,13 +34,13 @@ module Firestarter
       invoke :setup_git
       invoke :setup_database
       invoke :scss_lint_config
+      invoke :bundle_install
       invoke :outro
     end
 
     def customize_gemfile
       build :replace_gemfile
       build :set_ruby_to_version_being_used
-      bundle_command "install"
     end
 
     def setup_database
@@ -153,6 +153,10 @@ module Firestarter
 
     def remove_routes_comment_lines
       build :remove_routes_comment_lines
+    end
+
+    def bundle_install
+      bundle_command "install"
     end
 
     def outro

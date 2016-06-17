@@ -222,7 +222,7 @@ end
     end
 
     def configure_puma
-      copy_file "puma.rb", "config/puma.rb"
+      copy_file "puma.rb", "config/puma.rb", force: true
     end
 
     def setup_foreman
