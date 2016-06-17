@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary = "Generate a Rails app using groupbuddies's best practices and opinions."
   s.description = <<-HERE
 Firestarter is the way to get great apps up and running in a heartbeat. It's
-what we use at Group Buddies.
+what we use at Subvisual.
   HERE
   s.authors = ["Subvisual"]
   s.email = "contact@subvisual.co"
