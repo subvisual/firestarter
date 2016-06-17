@@ -11,6 +11,7 @@ matrix:
     - rvm: ruby-head
     - env: "RAILS_VERSION=master"
 before_install:
+  - gem install bundler -v 1.11.2
   - git config --global user.name "Travis CI"
   - git config --global user.email "travis-ci@example.com"
 install:
