@@ -19,6 +19,7 @@ module Firestarter
 
     def firestarter_customization # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
       invoke :customize_gemfile
+      invoke :bundle_install
       invoke :setup_development_environment
       invoke :setup_test_environment
       invoke :setup_production_environment
@@ -32,7 +33,6 @@ module Firestarter
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
       invoke :setup_git
-      invoke :bundle_install
       invoke :setup_database
       invoke :scss_lint_config
       invoke :outro

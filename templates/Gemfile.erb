@@ -32,11 +32,14 @@ end
 
 group :test do
   gem "capybara"
-  gem "capybara-webkit"
   gem "database_cleaner"
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
+
+  install_if -> { `cat /etc/os-release 2> /dev/null` !~ /Arch Linux/ } do
+    gem "capybara-webkit"
+  end
 end
 
 group :production, :staging do
