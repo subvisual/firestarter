@@ -1,4 +1,6 @@
-# Firestarter [![Build Status](https://travis-ci.org/groupbuddies/firestarter.svg?branch=master)](https://travis-ci.org/groupbuddies/firestarter)
+# Firestarter
+
+[![Build Status](https://travis-ci.org/subvisual/firestarter.svg?branch=master)](https://travis-ci.org/subvisual/firestarter) [![Code Climate](https://codeclimate.com/github/subvisual/firestarter/badges/gpa.svg)](https://codeclimate.com/github/subvisual/firestarter)
 
 Firestarter is the base Rails application used at [Group Buddies](http://groupbuddies.com).
 
