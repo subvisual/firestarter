@@ -14,7 +14,7 @@ module FirestarterTestHelpers
       Bundler.with_clean_env do
         ENV["TESTING"] = "1"
 
-        `#{firestarter_bin} #{APP_NAME} #{arguments}`
+        `bundle exec #{firestarter_bin} #{APP_NAME} #{arguments}`
       end
     end
   end

@@ -268,10 +268,6 @@ end
       run "git init"
     end
 
-    def copy_miscellaneous_files
-      copy_file "errors.rb", "config/initializers/errors.rb"
-    end
-
     def customize_error_pages
       meta_tags = <<-EOS
   <meta charset='utf-8' />

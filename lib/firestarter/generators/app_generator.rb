@@ -4,13 +4,16 @@ require "rails/generators/rails/app/app_generator"
 module Firestarter
   class AppGenerator < Rails::Generators::AppGenerator # rubocop:disable Metrics/ClassLength
     class_option :database, type: :string, aliases: "-d", default: "postgresql",
-                            desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
+      desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
 
     class_option :github, type: :string, aliases: "-G", default: nil,
-                          desc: "Create Github repository and add remote origin pointed to repo"
+      desc: "Create Github repository and add remote origin pointed to repo"
 
     class_option :skip_test_unit, type: :boolean, aliases: "-T", default: true,
-                                  desc: "Skip Test::Unit files"
+        desc: "Skip Test::Unit files"
+
+    class_option :skip_bundle, type: :boolean, aliases: "-B", default: true,
+      desc: "Don't run bundle install"
 
     def finish_template
       invoke :firestarter_customization
@@ -29,7 +32,6 @@ module Firestarter
       invoke :setup_javascript
       invoke :configure_app
       invoke :setup_stylesheets
-      invoke :copy_miscellaneous_files
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
       invoke :setup_git
@@ -143,11 +145,6 @@ module Firestarter
       build :init_git
     end
 
-    def copy_miscellaneous_files
-      say "Copying miscellaneous support files"
-      build :copy_miscellaneous_files
-    end
-
     def customize_error_pages
       say "Customizing the 500/404/422 pages"
       build :customize_error_pages
@@ -163,10 +160,6 @@ module Firestarter
 
     def outro
       say "Congratulations! You just started a fire."
-    end
-
-    def run_bundle
-      # Let's not: We'll bundle manually at the right spot
     end
 
     def ruby_version_with_patch_level
