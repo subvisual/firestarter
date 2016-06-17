@@ -5,11 +5,9 @@ rvm:
   - ruby-head
 env:
   - "RAILS_VERSION=4.2.6"
-  - "RAILS_VERSION=master"
 matrix:
   allow_failures:
     - rvm: ruby-head
-    - env: "RAILS_VERSION=master"
 before_install:
   - gem install bundler -v 1.11.2
   - git config --global user.name "Travis CI"
