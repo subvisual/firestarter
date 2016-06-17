@@ -32,9 +32,9 @@ module Firestarter
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
       invoke :setup_git
+      invoke :bundle_install
       invoke :setup_database
       invoke :scss_lint_config
-      invoke :bundle_install
       invoke :outro
     end
 
