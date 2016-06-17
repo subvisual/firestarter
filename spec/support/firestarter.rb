@@ -12,6 +12,7 @@ module FirestarterTestHelpers
   def run_firestarter(arguments = nil)
     Dir.chdir(tmp_path) do
       Bundler.with_clean_env do
+        add_fakes_to_path
         ENV["TESTING"] = "1"
 
         `bundle exec #{firestarter_bin} #{APP_NAME} #{arguments}`
@@ -45,12 +46,20 @@ module FirestarterTestHelpers
 
   private
 
+  def add_fakes_to_path
+    ENV["PATH"] = "#{support_bin}:#{ENV['PATH']}"
+  end
+
   def tmp_path
     @tmp_path ||= Pathname.new("#{root_path}/tmp")
   end
 
   def firestarter_bin
     File.join(root_path, "bin", "firestarter")
+  end
+
+  def support_bin
+    File.join(root_path, "spec", "fakes", "bin")
   end
 
   def root_path

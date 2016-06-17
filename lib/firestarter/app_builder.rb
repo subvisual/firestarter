@@ -316,13 +316,6 @@ end
 
     private
 
-    def override_path_for_tests
-      return unless ENV["TESTING"]
-
-      support_bin = File.expand_path(File.join("..", "..", "spec", "fakes", "bin"))
-      "PATH=#{support_bin}:$PATH"
-    end
-
     def factories_spec_rake_task
       IO.read find_in_source_paths("factories_spec_rake_task.rb")
     end
