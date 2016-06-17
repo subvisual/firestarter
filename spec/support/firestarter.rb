@@ -29,6 +29,16 @@ module FirestarterTestHelpers
     end
   end
 
+  def setup_app_dependencies
+    if File.exist?(project_path)
+      Dir.chdir(project_path) do
+        Bundler.with_clean_env do
+          `bundle check || bundle install`
+        end
+      end
+    end
+  end
+
   def project_path
     @project_path ||= Pathname.new("#{tmp_path}/#{APP_NAME}")
   end

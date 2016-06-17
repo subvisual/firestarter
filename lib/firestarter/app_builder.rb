@@ -137,6 +137,17 @@ end
         ""
     end
 
+    def remove_require_tree
+      replace_in_file "app/assets/javascripts/application.js",
+        %r{//= require_tree .\n},
+        ""
+    end
+
+    def add_retina_tag
+      append_to_file "app/assets/javascripts/application.js",
+        "//= require retina_tag\n"
+    end
+
     def use_postgres_config_template
       template "postgresql_database.yml.erb", "config/database.yml",
         force: true

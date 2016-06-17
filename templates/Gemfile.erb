@@ -1,55 +1,46 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '<%= RUBY_VERSION %>'
+ruby "<%= RUBY_VERSION %>"
 
-gem 'bourbon'
-gem 'coffee-rails'
-gem 'dotenv-rails'
-gem 'email_validator'
-gem 'foreman'
-gem 'jquery-rails'
-gem 'pg'
-gem 'pry-rails'
-gem 'puma'
-gem 'rack-timeout'
-gem 'rails', '~> <%= Firestarter::RAILS_VERSION %>'
-gem 'recipient_interceptor'
-gem 'sass-rails'
-gem 'slim-rails'
-gem 'title'
-gem 'uglifier'
+gem "clearance"
+gem "foreman"
+gem "jquery-rails"
+gem "pg"
+gem "pry-rails"
+gem "puma"
+gem "rails", "~> <%= Firestarter::RAILS_VERSION %>"
+gem "retina_tag", github: "naps62/retina_tag", ref: "9389bec"
+gem "sass-rails"
+gem "slim-rails"
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'letter_opener'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "letter_opener"
+  gem "quiet_assets"
+  gem "spring", require: false
+  gem "spring-commands-rspec", require: false
 end
 
 group :development, :test do
-  gem 'awesome_print'
-  gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'rubocop', require: false
-  gem 'scss_lint', require: false
+  gem "factory_girl_rails"
+  gem "pry-remote", github: "Mon-Ouie/pry-remote"
+  gem "rspec-rails", "~> 3.0"
+  gem "rubocop", require: false
+  gem "scss_lint", require: false
 end
 
 group :test do
-  gem 'database_cleaner'
-  gem 'launchy'
-  gem 'simplecov', require: false
-  gem 'timecop'
-  gem 'webmock'
+  gem "capybara"
+  gem "capybara-webkit"
+  gem "database_cleaner"
+  gem "simplecov", require: false
+  gem "timecop"
+  gem "webmock"
 end
 
 group :production, :staging do
-  gem 'rails_12factor'
-end
-
-group :deploy do
-  gem 'capistrano', '~> 3.2.1', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-env', require: false
-  gem 'capistrano-foreman', github: 'groupbuddies/capistrano-foreman', branch: :master
+  gem "rack-timeout"
+  gem "rails_12factor"
+  gem "uglifier"
 end

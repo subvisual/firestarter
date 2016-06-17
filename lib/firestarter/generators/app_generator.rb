@@ -25,7 +25,7 @@ module Firestarter
       invoke :setup_staging_environment
       invoke :setup_secret_token
       invoke :create_firestarter_views
-      invoke :setup_coffeescript
+      invoke :setup_javascript
       invoke :configure_app
       invoke :setup_stylesheets
       invoke :copy_miscellaneous_files
@@ -101,9 +101,11 @@ module Firestarter
       build :create_application_layout
     end
 
-    def setup_coffeescript
-      say "Setting up CoffeeScript defaults"
+    def setup_javascript
+      say "Setting up JS defaults"
       build :remove_turbolinks
+      build :remove_require_tree
+      build :add_retina_tag
     end
 
     def configure_app # rubocop:disable Metrics/MethodLength
