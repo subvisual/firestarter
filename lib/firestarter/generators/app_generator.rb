@@ -9,6 +9,12 @@ module Firestarter
     class_option :github, type: :string, aliases: "-G", default: nil,
       desc: "Create Github repository and add remote origin pointed to repo"
 
+    class_option :version, type: :boolean, aliases: "-v", group: :firestarter,
+      desc: "Show Firestarter version number and quit"
+
+    class_option :help, type: :boolean, aliases: '-h', group: :firestarter,
+      desc: "Show this help message and quit"
+
     class_option :skip_test_unit, type: :boolean, aliases: "-T", default: true,
         desc: "Skip Test::Unit files"
 
@@ -164,6 +170,10 @@ module Firestarter
 
     def ruby_version_with_patch_level
       "#{RUBY_VERSION}#{patch_level}"
+    end
+
+    def self.banner
+      "firestarter #{arguments.map(&:usage).join(' ')} [options]"
     end
 
     protected
