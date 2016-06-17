@@ -29,8 +29,14 @@ RSpec.describe "ignite a new project with default configuration" do
   end
 
   it "downloads a .rubocop.yml" do
-    rubocop_file = IO.read("#{project_path}/.rubocop.yml")
+    rubocop_file = IO.read(File.join(project_path), ".rubocop.yml"))
 
     expect(rubocop_file).to match %r{Style/StringLiterals}
+  end
+
+  it "downloads a README.md" do
+    readme_file = IO.read(File.join(project.path, "README.md"))
+
+    expect(readme_file).not_to be_empty
   end
 end

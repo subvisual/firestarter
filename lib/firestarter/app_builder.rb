@@ -3,7 +3,10 @@ module Firestarter
     include Firestarter::Actions
 
     def readme
-      template "README.md.erb", "README.md"
+      download_file(
+        "https://raw.githubusercontent.com/subvisual/guides/master/github/templates/README.md",
+        "README.md",
+      )
     end
 
     def rakefile
