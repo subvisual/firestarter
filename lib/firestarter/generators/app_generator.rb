@@ -42,6 +42,7 @@ module Firestarter
 
     def customize_gemfile
       build :replace_gemfile
+      build :override_gemfile_lock_for_tests
       build :set_ruby_to_version_being_used
     end
 

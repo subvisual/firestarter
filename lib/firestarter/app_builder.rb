@@ -308,13 +308,19 @@ end
       copy_file "metrics.reek", ".metrics.reek"
     end
 
+    def override_gemfile_lock_for_tests
+      return unless ENV["TESTING"]
+
+      copy_file "test/Gemfile.lock", "Gemfile.lock"
+    end
+
     private
 
     def override_path_for_tests
-      if ENV["TESTING"]
-        support_bin = File.expand_path(File.join("..", "..", "spec", "fakes", "bin"))
-        "PATH=#{support_bin}:$PATH"
-      end
+      return unless ENV["TESTING"]
+
+      support_bin = File.expand_path(File.join("..", "..", "spec", "fakes", "bin"))
+      "PATH=#{support_bin}:$PATH"
     end
 
     def factories_spec_rake_task
