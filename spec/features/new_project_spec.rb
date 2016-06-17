@@ -28,15 +28,33 @@ RSpec.describe "ignite a new project with default configuration" do
     expect(ruby_version_file).to eq "#{RUBY_VERSION}\n"
   end
 
-  it "downloads a .rubocop.yml" do
-    rubocop_file = IO.read(File.join(project_path), ".rubocop.yml"))
+  context "downloaded files" do
+    it "downloads a .rubocop.yml" do
+      rubocop_file = IO.read(File.join(project_path, ".rubocop.yml"))
 
-    expect(rubocop_file).to match %r{Style/StringLiterals}
+      expect(rubocop_file).to match %r{Style/StringLiterals}
+    end
+
+    it "downloads a README.md" do
+      readme_file = IO.read(File.join(project_path, "README.md"))
+
+      expect(readme_file).not_to be_empty
+    end
   end
 
-  it "downloads a README.md" do
-    readme_file = IO.read(File.join(project.path, "README.md"))
+  context "copied template files" do
+    TEMPLATES_TO_CHECK = {
+      "Rakefile" => "Rakefile",
+    }
 
-    expect(readme_file).not_to be_empty
+    TEMPLATES_TO_CHECK.each do |template_file, result_file|
+      it "copies #{template_file} to #{result_file}" do
+        template_content = IO.read(File.join(template_path, template_file))
+
+        content = IO.read(File.join(project_path, result_file))
+
+        expect(content).to eq template_content
+      end
+    end
   end
 end

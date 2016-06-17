@@ -53,6 +53,10 @@ module FirestarterTestHelpers
     File.join(root_path, "bin", "firestarter")
   end
 
+  def template_path
+    File.join(root_path, "templates")
+  end
+
   def root_path
     File.expand_path("../../../", __FILE__)
   end

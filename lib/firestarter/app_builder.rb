@@ -10,7 +10,8 @@ module Firestarter
     end
 
     def rakefile
-      template "Rakefile.erb", "Rakefile"
+      copy_file "Rakefile"
+      copy_file "lib/tasks/lint.rake"
     end
 
     def raise_on_delivery_errors
