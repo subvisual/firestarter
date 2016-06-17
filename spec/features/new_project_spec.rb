@@ -27,4 +27,10 @@ RSpec.describe "ignite a new project with default configuration" do
     ruby_version_file = IO.read("#{project_path}/.ruby-version")
     expect(ruby_version_file).to eq "#{RUBY_VERSION}\n"
   end
+
+  it "downloads a .rubocop.yml" do
+    rubocop_file = IO.read("#{project_path}/.rubocop.yml")
+
+    expect(rubocop_file).to match %r{Style/StringLiterals}
+  end
 end

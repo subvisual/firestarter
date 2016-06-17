@@ -154,7 +154,10 @@ end
     end
 
     def use_rubocop_config
-      template "rubocop.yml", ".rubocop.yml"
+      download_file(
+        "https://github.com/subvisual/guides/blob/master/linters/ruby/.rubocop.yml",
+        ".rubocop.yml"
+      )
     end
 
     def create_database
