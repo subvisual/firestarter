@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
 Firestarter is the way to get great apps up and running in a heartbeat. It's
 what we use at Group Buddies.
   HERE
-  s.authors = ["groupbuddies"]
-  s.email = "contact@groupbuddies.com"
+  s.authors = ["Subvisual"]
+  s.email = "contact@subvisual.co"
 
   s.files = `git ls-files`.split("\n")
   s.executables = ["firestarter"]
