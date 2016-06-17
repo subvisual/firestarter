@@ -1,3 +1,5 @@
+require "open-uri"
+
 module Firestarter
   module Actions
     def replace_in_file(relative_path, find, replace)
@@ -23,13 +25,7 @@ module Firestarter
     end
 
     def download_file(uri_string, destination)
-      uri = URI.parse(uri_string)
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true if uri_string =~ /^https/
-      request = Net::HTTP::Get.new(uri.path)
-      contents = http.request(request).body
-      path = File.join(destination_root, destination)
-      File.open(path, "w") { |file| file.write(contents) }
+      copy_file open(uri_string).path, destination
     end
   end
 end
