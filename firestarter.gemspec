@@ -28,7 +28,7 @@ what we use at Subvisual.
   s.date = Date.today.strftime("%Y-%m-%d")
 
   s.add_dependency "bundler", "~> 1.3"
-  s.add_dependency "rails", Firestarter::RAILS_VERSION
+  s.add_dependency "rails", "~> #{Firestarter::RAILS_VERSION}"
 
   s.add_development_dependency "aruba", "~> 0.5.4"
   s.add_development_dependency "rspec", "~> 2.0"
