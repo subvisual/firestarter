@@ -9,7 +9,7 @@ module Firestarter
       )
     end
 
-    def rakefile
+    def rakefile_and_tasks
       copy_file "Rakefile"
       copy_file "lib/tasks/lint.rake"
     end
