@@ -30,8 +30,8 @@ what we use at Subvisual.
   s.add_dependency "bundler", "~> 1.3"
   s.add_dependency "rails", Firestarter::RAILS_VERSION
 
-  s.add_development_dependency "aruba", "~> 0.5.4"
-  s.add_development_dependency "rspec", "~> 2.0"
+  s.add_development_dependency "aruba", "~> 0.14.2"
+  s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "capybara", "~> 2.2", ">= 2.2.0"
   s.add_development_dependency "rubocop", "~> 0.40.0"
 end
