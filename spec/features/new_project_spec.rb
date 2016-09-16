@@ -25,7 +25,7 @@ RSpec.describe "ignite a new project with default configuration" do
 
   it "creates .ruby-version from Suspenders .ruby-version" do
     ruby_version_file = IO.read("#{project_path}/.ruby-version")
-    expect(ruby_version_file).to eq "#{RUBY_VERSION}\n"
+    expect(ruby_version_file).to start_with "#{RUBY_VERSION}"
   end
 
   it "downloads a .rubocop.yml" do
