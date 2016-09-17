@@ -1,85 +1,101 @@
-# Firestarter
+[subvisual]: http://subvisual.co/
+[build-page]: https://travis-ci.org/subvisual/firestarter
+[code-climate]: https://codeclimate.com/github/subvisual/firestarter
 
-[![Build Status](https://travis-ci.org/subvisual/firestarter.svg?branch=master)](https://travis-ci.org/subvisual/firestarter) [![Code Climate](https://codeclimate.com/github/subvisual/firestarter/badges/gpa.svg)](https://codeclimate.com/github/subvisual/firestarter)
+Firestarter
+===========
 
-Firestarter is the base Rails application used at [Group Buddies](http://groupbuddies.com).
+[![Build Status](https://travis-ci.org/subvisual/firestarter.svg?branch=master)][build-page]
+[![Code Climate](https://codeclimate.com/github/subvisual/firestarter/badges/gpa.svg)][code-climate]
+
+Firestarter is the Rails application generator used at [Subvisual][subvisual].
+
+**Table of Contents**
+
+* [Installation](#installation)
+* [Gemfile](#gemfile)
+* [Other goodies](#other-goodies)
+* [Git](#git)
+* [Dependencies](#dependencies)
+* [Issues](#issues)
+* [Contributing](#contributing)
+* [Credits](#credits)
+* [License](#license)
 
 Installation
 ------------
 
-First install the firestarter gem:
+First install the Firestarter gem:
 
     gem install gb-firestarter
 
 Then run:
 
-    firestarter projectname
+    firestarter <project_name>
 
-This will create a Rails app in `projectname`.
+This will create a new Rails application in `./<project_name>`. By default,
+Firestarter will use Rails 4.2.0 to generate new applications. You can override
+this by setting the `RAILS_VERSION` environment variable when running the
+generator:
 
-By default this script creates a new git repository. See below if you
-want to use it against an existing repo.
+    RAILS_VERSION=4.1.16 firestarter <project_name>
+
+
+By default this script creates a new git repository. See below if you want to
+use it against an existing one.
 
 Gemfile
 -------
 
-To see the latest and greatest gems, look at Firstarter's
-[Gemfile](templates/Gemfile.erb),
-which will be appended to the default generated projectname/Gemfile.
+To see the latest and greatest gems, look at Firestarter's template
+[Gemfile](templates/Gemfile.erb), which will be appended to the default
+generated `<project_name>/Gemfile`.
 
 It includes application gems like:
 
-* [Bourbon](https://github.com/thoughtbot/bourbon) for Sass mixins
-* [Email Validator](https://github.com/balexand/email_validator) for email
-  validation
-* [jQuery Rails](https://github.com/rails/jquery-rails) for jQuery
-* [Postgres](https://github.com/ged/ruby-pg) for access to the Postgres database
-* [Rack Timeout](https://github.com/kch/rack-timeout) to abort requests that are
-  taking too long
-* [Recipient Interceptor](https://github.com/croaky/recipient_interceptor) to
-  avoid accidentally sending emails to real people from staging
-* [Simple Form](https://github.com/plataformatec/simple_form) for form markup
-  and style
-* [Unicorn](https://github.com/defunkt/unicorn) to serve HTTP requests
-* [Title](https://github.com/calebthompson/title) for storing titles in
-  translations
-* [Dotenv](https://github.com/bkeepers/dotenv) for loading environment variables
+* [dotenv](https://github.com/bkeepers/dotenv) for loading environment variables
+  from a file;
+* [jQuery Rails](https://github.com/rails/jquery-rails) for jQuery;
+* [Postgres](https://github.com/ged/ruby-pg) for access to the Postgres
+  database;
+* [Pry Rails](https://github.com/rweng/pry-rails) for performing console
+  operations;
+* [Puma](https://github.com/puma/puma) to serve HTTP requests.
 
 And gems only for staging and production like:
 
-* [New Relic RPM](https://github.com/newrelic/rpm) for monitoring performance
+* [Rack Timeout](https://github.com/kch/rack-timeout) to abort requests that are
+  taking too long;
 * [Rails 12 Factor](https://github.com/heroku/rails_12factor) to make running
-  Rails 4 apps easier on Heroku
+  Rails applications easier on Heroku.
 
 And development gems like:
 
-* [Pry Rails](https://github.com/rweng/pry-rails) for debugging
+* [Better Errors](https://github.com/charliesome/better_errors) for debugging.
 
 And testing gems like:
 
 * [Capybara](https://github.com/jnicklas/capybara) and
   [Capybara Webkit](https://github.com/thoughtbot/capybara-webkit) for
-  integration testing
-* [Factory Girl](https://github.com/thoughtbot/factory_girl) for test data
-* [RSpec](https://github.com/rspec/rspec) for unit testing
-* [RSpec Mocks](https://github.com/rspec/rspec-mocks) for stubbing and spying
-* [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers) for common
-  RSpec matchers
-* [Timecop](https://github.com/jtrupiano/timecop-console) for testing time
+  integration testing;
+* [Factory Girl](https://github.com/thoughtbot/factory_girl) for generating test
+  data (and seeds);
+* [RSpec](https://github.com/rspec/rspec) for unit testing;
+* [Timecop](https://github.com/jtrupiano/timecop-console) for testing time.
 
 Other goodies
 -------------
 
-Firestarter also comes with:
+Firestarter also includes:
 
-* The [`./bin/setup`][bin] convention for new developer setup
-* Rails' flashes set up and in application layout
-* A few nice time formats set up for localization
-* `Rack::Deflater` to [compress responses with Gzip][compress]
-* [Fast-failing factories][fast]
-* A [low database connection pool limit][pool]
-* [Safe binstubs][binstub]
-* [t() and l() in specs without prefixing with I18n][i18n]
+* The [`./bin/setup`][bin] convention for new developer setup;
+* Rails' flashes set up and in application layout;
+* A few nice time formats set up for localization;
+* `Rack::Deflater` to [compress responses with Gzip][compress];
+* [Fast-failing factories][fast];
+* [A low database connection pool limit][pool];
+* [Safe binstubs][binstub];
+* [`t()` and `l()` in specs without prefixing with `I18n`][i18n].
 
 [bin]: http://robots.thoughtbot.com/bin-setup
 [compress]: http://robots.thoughtbot.com/content-compression-with-rack-deflater/
@@ -91,7 +107,7 @@ Firestarter also comes with:
 Firestarter fixes several of Rails' [insecure defaults]:
 
 * Firestarter uses Puma instead of WEBrick, allowing less verbose Server
-  headers.
+  headers;
 * Firestarter is configured to pull your application secret key base from an
   environment variable, which means you won't need to risk placing it in version
   control.
@@ -101,57 +117,66 @@ Firestarter fixes several of Rails' [insecure defaults]:
 Git
 ---
 
-This will initialize a new git repository for your Rails app. You can
+This will initialize a new git repository for your Rails application. You can
 bypass this with the `--skip-git` option:
 
-    firestarter app --skip-git true
+    firestarter <project_name> --skip-git true
 
 Dependencies
 ------------
 
-Firestarter requires Ruby 2.1.0 or greater.
+Firestarter requires Ruby 2.1.0 or greater. The generated project will be set to
+use Ruby 2.3.1 by default.
 
 Some gems included in Firestarter have native extensions. You should have GCC
-installed on your machine before generating an app with Firestarter.
+installed on your machine before generating an application with Firestarter.
 
-Use [OS X GCC Installer](https://github.com/kennethreitz/osx-gcc-installer/) for
+Use the [OS X GCC Installer](https://github.com/kennethreitz/osx-gcc-installer/) for
 Snow Leopard (OS X 10.6).
 
 Use [Command Line Tools for XCode](https://developer.apple.com/downloads/index.action)
-for Lion (OS X 10.7) or Mountain Lion (OS X 10.8).
+for Lion (OS X 10.7) or posterior.
 
 We use [Capybara Webkit](https://github.com/thoughtbot/capybara-webkit) for
-full-stack Javascript integration testing. It requires QT. Instructions for
-installing QT are
-[here](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit).
+full-stack Javascript integration testing. It requires Qt. Instructions for
+installing Qt are [here][installing-qt]. **WARNING**: Qt 5.6 dropped the Qt
+WebKit module, in favor of the new Qt WebEngine module. As such, the installed
+version of Qt must be <= 5.5.
 
-PostgreSQL needs to be installed and running for the `db:create` rake task. See
-[Postgres.app](http://postgresapp.com/) for Mac OS.
+[installing-qt]: https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
+
+PostgreSQL needs to be installed and running for the `db:create` rake task. For
+OS X you can install it through [Homebrew](http://brew.sh/) or by installing the
+[Postgres application][postgres-app].
+
+[postgres-app]: http://postgresapp.com/
 
 Issues
 ------
 
-If you have problems, please create a
-[Github Issue](https://github.com/groupbuddies/firestarter/issues).
+If you have any problems with this project, please create a
+[Github Issue](https://github.com/subvisual/firestarter/issues).
 
 Contributing
 ------------
 
-Please see CONTRIBUTING.md for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 Credits
 -------
 
-Firestarter is largely inspired by thoughtbot's suspenders, so thank you
-thoughtbot.
+Firestarter is maintained by [Subvisual][subvisual].
 
-![groupbuddies](http://www.groupbuddies.com/logo.png)
+[![Subvisual](https://raw.githubusercontent.com/subvisual/guides/master/github/templates/subvisual_logo_with_name.png)][subvisual]
 
-Firestarter is maintained by
-[Group Buddies](http://groupbuddies.com/).
+Firestarter is largely inspired by [thoughtbot's suspenders][suspenders], so
+thank you thoughtbot.
+
+[suspenders]: https://github.com/thoughtbot/suspenders
 
 License
 -------
 
-Firestarter is © 2014 GB-Software As A Service, Lda. It is free software and may be
-redistributed under the terms specified in the [LICENSE](LICENSE) file.
+Firestarter is Copyright © 2014-2016 GB-Software As A Service, Lda. It is free
+software and may be redistributed under the terms specified in the
+[LICENSE](LICENSE) file.
