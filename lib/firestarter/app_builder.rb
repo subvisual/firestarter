@@ -3,11 +3,15 @@ module Firestarter
     include Firestarter::Actions
 
     def readme
-      template "README.md.erb", "README.md"
+      download_file(
+        "https://raw.githubusercontent.com/subvisual/guides/master/github/templates/README.md",
+        "README.md",
+      )
     end
 
-    def rakefile
-      template "Rakefile.erb", "Rakefile"
+    def rakefile_and_tasks
+      copy_file "Rakefile"
+      copy_file "lib/tasks/lint.rake"
     end
 
     def raise_on_delivery_errors
