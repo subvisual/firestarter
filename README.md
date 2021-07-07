@@ -177,6 +177,6 @@ thank you thoughtbot.
 License
 -------
 
-Firestarter is Copyright © 2014-2016 GB-Software As A Service, Lda. It is free
+Firestarter is Copyright © 2014-2017 Subvisual. It is free
 software and may be redistributed under the terms specified in the
 [LICENSE](LICENSE) file.
